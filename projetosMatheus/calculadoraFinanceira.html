@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotorSense | Simulador Financeiro</title>
+</head>
+<body>
+
+    <h1>SIMULADOR FINANCEIRO</h1>
+
+    <!--                            EXPLICAÇÃO DO PAPEL DA CALCULADOR                   -->
+    <p>Esse simulador financeiro permite que a empresa estime possiveis custos relacionados a falhas e paradas inesperadas dos motores de bombas centrifugas. A partir de informações como custo de manutenção, tempo de parada, custo da produção e quantidade de falhas, a calculadora apresenta uma estimativa do impacto financeiro que esses problemas podem gerar. Dessa forma, o usuário consegue visualizar a importância do monitoramento da temperatura e conhecer como o MotorSense pode auxiliar na identificação antecipada de condições anormais nos motores.</p>
+
+    
+    <!--                PERGUNTAS AO USUARIO        -->
+    <label for="ipt_valorManutencao">Custo médio de uma manutenção(por motor): </label>
+    <input type="text" id="ipt_valorManutencao"><br>
+
+    <label for="ipt_tempoParado">Quanto tempo a produção fica parada(horas): </label>
+    <input type="text" id="ipt_tempoParado"><br>
+    
+    <label for="ipt_custoHora">Custo da produção parada(por hora): </label>
+    <input type="text" id="ipt_custoHora"><br>
+
+    <label for="ipt_qtdFalhas">Quantidade de falhas nos motores(por ano): </label>
+    <input type="text" id="ipt_qtdFalhas"><br>
+
+    <button onclick="calcular()">CALCULAR SIMULAÇÃO</button>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+        //          PEGAR OS VALORES FORNECIDOS
+        let valorManutencao = Number(ipt_valorManutencao.value);
+        let tempoParado = Number(ipt_tempoParado.value);
+        let custoHora = Number(ipt_custoHora.value);
+        let qtdFalhas = Number(ipt_qtdFalhas.value);
+
+        //              CALCULAR OS CUSTOS
+        
+        let custoProducao = custoHora * tempoParado; 
+        // CUSTO DA PRODUÇÃO DURANTE A PARADA
+        
+        let custoTotal = custoProducao + valorManutencao; 
+        // CUSTO TOTAL DE UMA OCORRENCIA
+
+        let custoAno = custoTotal * qtdFalhas; 
+        // CUSTO TOTAL ESTIMADO POR ANO 
+
+        div_exibir.innerHTML = `<p>Custo de uma parada: R$ ${custoTotal.toFixed(2)}</p><br>
+        <p>Custo anual estimado: R$ ${custoAno.toFixed(2)}</p><br>`
+    };
+</script>
