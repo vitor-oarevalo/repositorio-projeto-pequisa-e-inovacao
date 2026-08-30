@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Impacto Financeiro</title>
+</head>
+<body>
+    <h1>ANÁLISE DE DISPONIBILIDADE E CUSTOS OPERACIONAIS</h1>
+    
+    <!-- Explicação do papel da calculadora -->
+    <p>Este simulador analisa o impacto financeiro gerado por paradas não planejadas em bombas centrífugas. O objetivo é mensurar os custos diretos de manutenção e as perdas de receita por ociosidade da linha de produção. A partir deste diagnóstico, torna-se possível avaliar o retorno sobre o investimento (ROI) na implementação do sistema de monitoramento térmico contínuo MotorSense para mitigação de falhas.</p>
+    
+    <!-- Perguntas ao usuário -->
+    <p>Custo direto de manutenção por evento (peças e mão de obra):</p>
+    <input type="text" id="ipt_custoManutencaoDireto" placeholder="0.00"><br>
+    
+    <p>Tempo médio de inatividade da produção por ocorrência (horas):</p>
+    <input type="text" id="ipt_tempoInatividadeHoras" placeholder="0"><br>
+    
+    <p>Custo de oportunidade / Perda de receita por hora de linha parada:</p>
+    <input type="text" id="ipt_perdaReceitaPorHora" placeholder="0.00"><br>
+    
+    <p>Frequência histórica de falhas críticas nos motores (por ano):</p>
+    <input type="text" id="ipt_frequenciaFalhasAno" placeholder="0"><br>
+    
+    <br>
+    <button onclick="calcular()">GERAR RELATÓRIO FINANCEIRO</button>
+    
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+function calcular(){
+    // Pegar os valores fornecidos
+    let custoManutencaoDireto = Number(ipt_custoManutencaoDireto.value);
+    let tempoInatividadeHoras = Number(ipt_tempoInatividadeHoras.value);
+    let perdaReceitaPorHora = Number(ipt_perdaReceitaPorHora.value);
+    let frequenciaFalhasAno = Number(ipt_frequenciaFalhasAno.value);
+    
+    // Calcular os custos
+    let perdaProdutividadeEvento = perdaReceitaPorHora * tempoInatividadeHoras; // Custo da ociosidade por parada
+    let custoTotalPorEvento = perdaProdutividadeEvento + custoManutencaoDireto; // Impacto de uma única ocorrência
+    let custoAnualTotal = custoTotalPorEvento * frequenciaFalhasAno; // Impacto financeiro anual acumulado
+    
+    // Projeção de otimização (Redução de 80% nas paradas não planejadas via monitoramento preditivo)
+    let reducaoCustosPredicao = custoAnualTotal * 0.8;
+    let custoResidualOperacional = custoAnualTotal * 0.2;
+    
+    div_exibir.innerHTML = `<p><b>Relatório de Impacto Financeiro (Status Atual):</b></p>
+    <p>Custo consolidado por parada não planejada: R$ ${custoTotalPorEvento.toFixed(2)}</p>
+    <p>Impacto financeiro total projetado para o período anual: R$ ${custoAnualTotal.toFixed(2)}</p>
+    <br>
+    <p><b>Projeção de Eficiência com a Implantação do MotorSense:</b></p>
+    <p>Economia anual estimada através da mitigação de falhas (80% de eficiência): R$ ${reducaoCustosPredicao.toFixed(2)}</p>
+    <p>Custo operacional anual projetado pós-implementação: R$ ${custoResidualOperacional.toFixed(2)}</p>
+    <p><b>A tecnologia MotorSense assegura a continuidade operacional e a previsibilidade dos ativos de sua planta.</b></p>`
+};
+</script>
