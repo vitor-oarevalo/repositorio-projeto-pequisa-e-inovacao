@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Prejuízo por Falha do Motor</title>
+</head>
+<body>
+    <h1>Simulador Financeiro</h1>
+    <span> Informe a quantidade de dias que a produção ficará parada: </span> 
+    <input type="text" id="ipt_qtdHoras"> <br>
+    <span>Informe o valor perdido por hora de produção: </span>
+    <input type="text" id="ipt_valorPerdido"> <br>
+    <span>Informe o custo da manunteção: </span> 
+    <input type="text" id="ipt_custoManuntecao"> <br>
+    <span>Informe o valor do material perdido: </span>
+    <input type="text" id="ipt_materialPerdido"> <br>
+    <button onclick="prejuizoTotal()">Prejuízo Total</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function prejuizoTotal(){
+        let qtdHoras = Number(ipt_qtdHoras.value);
+        let valorPerdido = Number(ipt_valorPerdido.value);
+        let custoManuntecao = Number(ipt_custoManuntecao.value);
+        let materialPerdido = Number(ipt_materialPerdido.value);
+        let resultado = (qtdHoras*valorPerdido) + materialPerdido + custoManuntecao
+        div_exibir.innerHTML = `O seu prejuízo total foi de: <b>${resultado}.</b>`
+    }
+</script>
