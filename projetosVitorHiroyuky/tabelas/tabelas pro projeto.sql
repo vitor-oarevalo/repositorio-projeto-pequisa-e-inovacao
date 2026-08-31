@@ -2,7 +2,6 @@ CREATE TABLE usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL,
 email VARCHAR(50) UNIQUE NOT NULL,
-perfil VARCHAR(50),
 senha VARCHAR(50) NOT NULL,
 telefone CHAR(13) UNIQUE,
 empresa VARCHAR(100),
@@ -23,14 +22,16 @@ nome VARCHAR(100) NOT NULL,
 potencia DECIMAL(10,2),
 fabricante VARCHAR(100),
 modelo VARCHAR(100),
-statuss VARCHAR(30)
+statuss VARCHAR(10),
+CONSTRAINT chkstatus CHECK(statuss IN (ativado, desativado))
 );
 
 CREATE TABLE sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
 modelo VARCHAR(50) NOT NULL,
 dataInstalacao DATE,
-statuss VARCHAR(30)
+statuss VARCHAR(10)
+CONSTRAINT chkstatus CHECK(statuss IN (ativado, desativado))
 );
 
 CREATE TABLE temperatura_coletada (
@@ -50,6 +51,5 @@ CREATE TABLE alerta (
 idAlerta INT PRIMARY KEY AUTO_INCREMENT,
 tipo VARCHAR(30) NOT NULL,
 mensagem VARCHAR(255),
-dataHora DATETIME NOT NULL,
-statuss VARCHAR(30)
+dataHora DATETIME NOT NULL
 );
