@@ -28,9 +28,8 @@ CONSTRAINT chkstatus CHECK(statuss IN (ativado, desativado))
 
 CREATE TABLE sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
-modelo VARCHAR(50) NOT NULL,
 dataInstalacao DATE,
-statuss VARCHAR(10)
+statuss VARCHAR(10),
 CONSTRAINT chkstatus CHECK(statuss IN (ativado, desativado))
 );
 
