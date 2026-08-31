@@ -13,7 +13,7 @@ idSuporte INT,
 nome VARCHAR(100),
 email VARCHAR(50),
 telefone CHAR(13),
-mensagem TEXT
+mensagem VARCHAR(255)
 );
 
 CREATE TABLE motor (
