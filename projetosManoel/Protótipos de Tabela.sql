@@ -10,7 +10,7 @@ insert into cadastroProjeto values
 	(default, 'AkzoNobel', '52.872.147/0001-98');
     
 select * from cadastroProjeto;
-insert into cadastroProjeto (nome, cpnj)values
+insert into cadastroProjeto (nome, cnpj)values
 	('Lukscolor', '46.928.552/0001-65'),
     ('Suvinil' ,'55.132.202/0001-89');
 
