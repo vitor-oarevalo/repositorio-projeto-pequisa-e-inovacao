@@ -3,7 +3,7 @@ use sprint1;
 create table cadastroProjeto(
 	idEmpresa int primary key auto_increment,
     nome varchar(50),
-    cpnj char(18) unique
+    cnpj char(18) unique
 );
 
 insert into cadastroProjeto values
@@ -30,6 +30,10 @@ insert into registroSensor values
 	(2, 89, '2025-09-08 12:09:47'),
 	(5, 95, '2025-01-12 09:45:28');
 
+alter table registroSensor modify column valorRegistro float not null;
+alter table registroSensor modify column hrRegistro datetime not null;
+describe registroSensor;
+
 use sprint1;
 
 create table SensorProjeto(
@@ -38,6 +42,7 @@ create table SensorProjeto(
     dtInstalacao date
 );
 
+alter table SensorProjeto modify column nome varchar(20) default 'LM35';
 insert into SensorProjeto values 
 	(1, 'LM35', '2026-08-28');
 select * from SensorProjeto;
