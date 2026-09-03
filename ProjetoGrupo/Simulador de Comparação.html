@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro - Monitoramento de Temperatura</title>
+</head>
+<body>
+    <h2>Simulador Financeiro</h2>
+    <h4>Esse simulador, tem como objetivo ajudar você e sua empresa <br> 
+    a tomar a decisão correta para o sucesso! <br>
+    Obs.: contratando nossos serviços de Monitoramento. </h4>
+    
+    <span>Informe o custo de um reparo: </span>
+    <input type="text" id="ipt_custoReparo"> <br>
+    
+    <span>Quanto custa um dia de máquina parada? </span>
+    <input type="text" id="ipt_diaCusto"> <br>
+
+    <span>Quantos dias a máquina ficou parada: </span>
+    <input type="text" id="ipt_maquinaParada"> <br>
+
+    <span>Qual a quantidade de ocorrências em um período de 30 dias? </span>
+    <input type="text" id="ipt_qtdOcorrencia"> <br>
+
+    <h4>Dados do Monitoramento</h4>
+    <span>Informe quantas máquinas irão receber o sensor: </span>
+    <input type="text" id="ipt_qtdMaquinas"> <br>
+
+    <h4>Para fins de simulação iremos usar números fixos para os seguintes campos: <br>
+    Custo do sensor: R$250 <br> Custo da Instalação: R$400 <br> Custo dos equipamentos: R$350 </h4>
+
+    <button onclick="calcular()">💸Calcular impacto financeiro💸</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        let custoReparo = Number(ipt_custoReparo.value);
+        let diaCusto = Number(ipt_diaCusto.value);
+        let maquinaParada = Number(ipt_maquinaParada.value);
+        let qtdOcorrencia = Number(ipt_qtdOcorrencia.value);
+        
+        // calculo do prejuizo de UMA ocorrencia:
+        let prejuizo = custoReparo + (diaCusto * maquinaParada)
+
+        // prejuízo total:
+        let prejuizoTotal = prejuizo * qtdOcorrencia;
+        let qtdMaquinas = Number(ipt_qtdMaquinas.value);
+        
+        let custoSensor = qtdMaquinas * 250;
+        let custoInstalacao = qtdMaquinas * 400;
+        let investimentoTotal = custoSensor + custoInstalacao + 350;
+
+        let potencialPrejuizoEvitado = prejuizoTotal - investimentoTotal;
+          
+        div_exibir.innerHTML =
+            `🟧Prejuízo por ocorrência: R$${prejuizo} <br> 
+            🟥Prejuízo total estimado: R$${prejuizoTotal} <br>
+            🟨Seu investimento inicial será: R$${investimentoTotal} <br> 
+            🟩O potencial de prejuízo evitado será: R$${potencialPrejuizoEvitado}.`
+            }
+</script>
