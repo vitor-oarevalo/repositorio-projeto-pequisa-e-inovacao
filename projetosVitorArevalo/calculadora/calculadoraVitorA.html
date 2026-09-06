@@ -12,31 +12,87 @@
 
     <!-- Maior Custo -->
     <label for="ipt_maiorCusto">Maior custo de manutenção de um motor:</label> <br>
-    <input type="text" placeholder="Insira aqui:" id="ipt_maiorCusto"> <br> <br>
+    <input type="number" placeholder="Insira aqui:" id="ipt_maiorCusto"> <br> <br>
 
     <!-- Menor Custo -->
     <label for="ipt_menorCusto">Menor custo de manutenção de um motor:</label> <br>
-    <input type="text" placeholder="Insira aqui:" id="ipt_menorCusto"> <br> <br>
+    <input type="number" placeholder="Insira aqui:" id="ipt_menorCusto"> <br> <br>
 
     <!-- Quantidade de falhas -->
     <label for="ipt_qtdFalhas">Quantidade de falhas por ano:</label> <br>
-    <input type="text" placeholder="Insira aqui:" id="ipt_qtdFalhas"> <br> <br>
+    <input type="number" placeholder="Insira aqui:" id="ipt_qtdFalhas"> <br> <br>
 
     <!-- Custo de Parada -->
     <label for="ipt_paradaHora">Custo de parada de produção por hora:</label> <br>
-    <input type="text" placeholder="Insira aqui:" id="ipt_paradaHora"> <br> <br>
+    <input type="number" placeholder="Insira aqui:" id="ipt_paradaHora"> <br> <br>
 
     <!-- Horas médias de parada -->
     <label for="ipt_horasFalha">Horas médias de parada por falha:</label> <br>
-    <input type="text" placeholder="Insira aqui:" id="ipt_horasFalha"> <br> <br>
+    <input type="number" placeholder="Insira aqui:" id="ipt_horasFalha"> <br> <br>
 
     <!-- Custo do sistema de monitoramento -->
-    <label for="ipt_monitoramento">Custo do sistema de monitoramento:</label> <br>
-    <input type="text" placeholder="Insira aqui:" id="ipt_monitoramento"> <br> <br>
+    <label for="ipt_monitoramento">Custo do sistema de monitoramento por motor:</label> <br>
+    <input type="number" placeholder="Insira aqui:" id="ipt_monitoramento" value="4000"> <br> <br>
 
     <button onclick="calcularInvestimento()">Calcular Investimento</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
 <script>
-    
+    function calcularInvestimento() {
+        let qtdMotor = Number(ipt_numMotor.value);
+        let maiorCusto = Number(ipt_maiorCusto.value);
+        let menorCusto = Number(ipt_menorCusto.value);
+
+        let qtdFalhas = Number(ipt_qtdFalhas.value);
+        let paradaHora = Number(ipt_paradaHora.value);
+        let mediaParada = Number(ipt_horasFalha.value);
+        
+        let investimentoMonitoramento = Number(ipt_monitoramento.value) * qtdMotor;
+
+        let mediaCusto = (maiorCusto + menorCusto) / 2;
+
+        let custoManutencao = qtdMotor * qtdFalhas * mediaCusto;
+
+        let custoParadas = qtdMotor * qtdFalhas * paradaHora * mediaParada;
+
+        let custoTotal = custoManutencao + custoParadas;
+
+        let custoSistema = custoTotal - (custoTotal * 40 / 100);
+
+        let economiaAnual = custoTotal - custoSistema;
+
+        let payback = investimentoMonitoramento / economiaAnual * 12;
+        
+        let roi = ((economiaAnual - investimentoMonitoramento) / investimentoMonitoramento) * 100;
+
+        let roi5Anos = ((economiaAnual * 5 - investimentoMonitoramento) / investimentoMonitoramento) * 100;
+
+        let retorno1Ano = economiaAnual - investimentoMonitoramento;
+        
+        let retorno3Anos = (economiaAnual * 3) - investimentoMonitoramento;
+
+        let retorno5Anos = (economiaAnual * 5) - investimentoMonitoramento;
+
+        div_mensagem.innerHTML = `
+        <h1>Investimento inicial: ${investimentoMonitoramento.toFixed(2)}</h1>
+        <p>Sem o sistema, o custo anual atual é de R$${custoTotal.toFixed(2)}</p>
+        <p>Com o sistema, o custo anual estimado seria de R$${custoSistema.toFixed(2)}</p>
+
+        <h1>Economia Acumulada</h1>
+        <p>Economia em 1 ano: R$${economiaAnual.toFixed(2)}</p>
+        <p>Economia em 3 anos: R$${(economiaAnual * 3).toFixed(2)}</p>
+        <p>Economia em 5 anos: R$${(economiaAnual * 5).toFixed(2)}</p>
+        
+        <h1>Retorno Líquido</h1>
+        <p>Retorno em 1 ano: R$${retorno1Ano.toFixed(2)}</p>
+        <p>Retorno em 3 anos: R$${retorno3Anos.toFixed(2)}</p>
+        <p>Retorno em 5 anos: R$${retorno5Anos.toFixed(2)}</p>
+        <p>Payback em ${payback.toFixed(1)} meses</p>
+        <p>ROI em 1 ano: ${roi.toFixed(2)}%</p>
+        <p>ROI em 5 anos: ${roi5Anos.toFixed(2)}%</p>
+
+        `
+        
+    }
 </script>
