@@ -34,6 +34,6 @@
         let prejuizo = (custoProducaoParada * duracaoParada) + motor;
         let monitorado = (custoProducaoParada * 2) + custoManutencao; //parada apenas para manutenção
         let economia = prejuizo - monitorado;
-        div_exibir.innerHTML = `<h3>Em 1 motor</h3> Sem o nosso produto: R$${prejuizo} de prejuízo <br> Com o nosso produto: R$${monitorado} de prejuízo (considerando parada de 2 horas para manutenção + custo de manutenção) <br> Economia: R$${economia} <br><br> Custo da nossa solução nas ${quantidade} máquinas: R$${custoSistema*quantidade} <br> Com apenas ${(custoSistema*quantidade/prejuizo*100).toFixed(0)}% do custo de 1 prejuizo você recupera o valor da nossa solução.`;
+        div_exibir.innerHTML = `<h3>Aquecimento em 1 motor</h3> Sem o nosso produto: R$${prejuizo} de prejuízo <br> Com o nosso produto: R$${monitorado} de prejuízo (considerando parada de 2 horas para manutenção + custo de manutenção) <br> Economia: R$${economia} <br><br> Custo da nossa solução nas ${quantidade} máquinas: R$${custoSistema*quantidade} <br> Com apenas ${(custoSistema*quantidade/prejuizo*100).toFixed(0)}% do custo de 1 prejuizo você recupera o valor da nossa solução.`;
     }
 </script>
