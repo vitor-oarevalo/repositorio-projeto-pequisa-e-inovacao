@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Economia - MaqTemp</title>
+    
+</head>
+<body style="background-color: beige;">
+    <div style="display: flex;">
+        <img src="LogoMaqTemp.jpeg" style="width: 100px;"><h1>Calculadora de Economia com Monitoramento<br> <b style="color:white;">Maq</b><b style="color: orange;">Temp</b></h1>
+    </div>
+    <p>Esta calculadora estima o prejuízo causado por paradas das bombas centrífugas.</p>
+    <label>Quantidade de motores que receberão o sensor:</label><br>
+    <input type="number" id="ipt_motores"><br><br>
+    <label>Quantidade de falhas por ano:</label><br>
+    <input type="number" id="ipt_falhas"><br><br>
+    <label>Horas de produção parada por falha:</label><br>
+    <input type="number" id="ipt_horas"><br><br>
+    <label>Valor perdido por hora de produção parada (R$):</label><br>
+    <input type="number" id="ipt_valorHora"><br><br>
+
+    <p>O monitoramento pode reduzir 50% das falhas.</p>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function calcular() {
+        let motores = Number(ipt_motores.value);
+        let falhas = Number(ipt_falhas.value);
+        let horas = Number(ipt_horas.value);
+        let valorHora = Number(ipt_valorHora.value);
+        let prejuizoPorFalha = horas * valorHora;
+        let prejuizoAnual = prejuizoPorFalha * falhas;
+        let investimento = motores * 250;
+        let economiaEstimada = (prejuizoAnual * 0.5) - investimento;
+
+        div_exibir.innerHTML = `
+            <h2>Resultado</h2>
+            <p style="color:red;">Prejuízo por falha: R$ ${prejuizoPorFalha.toFixed(2)}</p>
+            <p style="color:red;">Prejuízo anual: R$ ${prejuizoAnual.toFixed(2)}</p>
+            <p style="color:blue;">Investimento nos sensores: R$ ${investimento.toFixed(2)}</p>
+            <p style="color:green;">Economia estimada no primeiro ano: R$ ${economiaEstimada.toFixed(2)}</p>
+        `;
+    }
+</script>
