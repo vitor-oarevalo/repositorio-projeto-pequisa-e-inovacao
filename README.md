@@ -79,42 +79,8 @@ O sistema utiliza o **LM35** para realizar a medição da temperatura do motor.
 O sensor envia um sinal analógico ao Arduino, que realiza a leitura e conversão desse sinal para um valor correspondente à temperatura.
 
 O funcionamento básico pode ser representado da seguinte forma:
-
-```text
-┌─────────────────┐
-│  Motor Elétrico │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│      LM35       │
-│ Sensor de Temp. │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│     Arduino     │
-│ Processamento   │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│ Monitoramento   │
-│ da Temperatura  │
-└────────┬────────┘
-         │
-         ▼
-    Temperatura
-      elevada?
-         │
-    ┌────┴────┐
-    │         │
-   NÃO       SIM
-    │         │
-    ▼         ▼
- Normal     Alerta
-```
-> Observação: A gente coloca aqui a imagem do Diagrama de Visão de Negócio.
+<img src="diagrama-visao-de-negocio.png" alt="imagem do diagrama" width=800px>
+> Imagem Diagrama de Visão de Negócio
 ---
 
 ## Monitoramento
