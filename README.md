@@ -6,7 +6,8 @@ Link da Calculadora Vitor Arevalo: <a href="https://vitor-oarevalo.github.io/rep
 Link da Calculadora Vitor Hiroyuky: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosVitorHiroyuky/simulador_financeiro/simulador_financeiro.html">Calculadora Vitor Hiroyuky</a> <br>
 Link da Calculadora Manoel Alves: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosManoel/Simulador%20de%20Comparação.html">Calculadora Manoel Alves</a> <br>
 Link da Calculadora Leonardo Linge: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosLeonardo/simulador.html">Calculadora Leonardo Linge</a> <br>
-Link da Calculadora Matheus Menino: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosMatheus/calculadoraFinanceira.html">Calculadora Matheus Menino</a>
+Link da Calculadora Matheus Menino: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosMatheus/calculadoraFinanceira.html">Calculadora Matheus Menino</a> <br>
+Link da Calculadora Pietro Giuliani: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosPietro/calculadora-prevencao-bombas1.0.html">Calculadora Pietro Giuliani</a>
 
 ## Equipe
 
