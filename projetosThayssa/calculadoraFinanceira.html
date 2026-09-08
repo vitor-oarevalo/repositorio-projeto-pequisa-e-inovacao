@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador Financeiro</title>
+  </head>
+  <body>
+    <h1>Simulador Financeiro - <span style="color: blue;">Maq</span><span style="color: #ff9900;">Temp</span></h1>
+
+    <span>Quantidade de falhas por ano:</span>
+    <input type="text" id="ipt_falhas" placeholder="Insira a quantidade de falhas"> <br>
+
+    <span>Custo de uma falha:</span>
+    <input type="text" id="ipt_custo" placeholder="Insira o custo da falha" >
+
+    <button onclick="calcular()">Calcular Economia</button>
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+<script>
+  function calcular() {
+    let falhas = Number(ipt_falhas.value);
+    let custo = Number(ipt_custo.value);
+    let prejuizo = falhas * custo;
+    let economia = (prejuizo * 50) / 100;
+    let custoComSistema = prejuizo - economia;
+
+    div_mensagem.innerHTML = ` <br> <b>Resultado da simulação:</b> <br>
+     Prejuízo anual sem a MAQTEMP: R$ ${prejuizo.toFixed(2)} <br> <span style="color: blue;">Economia estimada com a MAQTEMP: R$ ${economia.toFixed(2)}</span> <br>
+      Custo estimado após o monitoramento: R$ ${custoComSistema.toFixed(2)} `;
+  }
+</script>
