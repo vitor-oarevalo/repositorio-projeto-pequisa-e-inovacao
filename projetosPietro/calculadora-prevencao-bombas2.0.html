@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Prevenção de Falhas</title>
+</head>
+<body>
+    <div>
+        <h1>Calculadora de Prevenção de Falhas</h1>
+        <p>Estime quanto o monitoramento de temperatura pode ajudar a reduzir os custos causados por falhas em motores de bombas centrífugas.</p>
+
+        <h2>Custos de uma falha</h2>
+        <label for="ipt_insumos">Valor dos insumos/tinta perdidos em uma falha (R$):</label>
+        <input type="number" id="ipt_insumos" min="0" placeholder=""><br>
+        <label for="ipt_producao">Valor perdido com a produção parada em uma falha (R$):</label>
+        <input type="number" id="ipt_producao" min="0" placeholder=""><br>
+        <label for="ipt_manutencao">Custo da manutenção corretiva em uma falha (R$):</label>
+        <input type="number" id="ipt_manutencao" min="0" placeholder=""><br>
+        <label for="ipt_ambiental">Custo de limpeza e descarte de resíduos em uma falha (R$):</label>
+        <input type="number" id="ipt_ambiental" min="0" placeholder=""><br>
+        <label for="ipt_falhas">Quantidade média de falhas por ano:</label>
+        <input type="number" id="ipt_falhas" min="0" placeholder=""><br>
+        <h2>Monitoramento preventivo</h2>
+        <label for="ipt_motores">Quantidade de conjuntos motor-bomba monitorados:</label>
+        <input type="number" id="ipt_motores" min="0" placeholder=""><br>
+        <label for="ipt_custoSistema">Custo do sistema de monitoramento por conjunto (R$):</label>
+        <input type="number" id="ipt_custoSistema" min="0" placeholder=""><br>
+        <label for="ipt_preventiva">Custo estimado de uma manutenção preventiva (R$):</label>
+        <input type="number" id="ipt_preventiva" min="0" placeholder=""><br>
+        <label for="ipt_reducao">Percentual estimado de redução nas falhas (%):</label>
+        <input type="number" id="ipt_reducao" min="0" max="100" placeholder=""><br>
+        <button onclick="calcularEconomia()">Calcular economia estimada</button>
+        <div id="div_resultado"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    function calcularEconomia() {
+        let insumos = Number(ipt_insumos.value);
+        let producao = Number(ipt_producao.value);
+        let manutencao = Number(ipt_manutencao.value);
+        let ambiental = Number(ipt_ambiental.value);
+        let falhas = Number(ipt_falhas.value);
+        let motores = Number(ipt_motores.value);
+        let custoSistema = Number(ipt_custoSistema.value);
+        let preventiva = Number(ipt_preventiva.value);
+        let reducao = Number(ipt_reducao.value);
+
+        let custoPorFalha = insumos + producao + manutencao + ambiental;
+        let custoAnualSemMonitoramento = custoPorFalha * falhas;
+        let falhasEvitadas = falhas * reducao / 100;
+        let custoDasPreventivas = falhasEvitadas * preventiva;
+        let investimentoInicial = motores * custoSistema;
+        let economiaBruta = falhasEvitadas * custoPorFalha;
+        let economiaPrimeiroAno = economiaBruta - custoDasPreventivas - investimentoInicial;
+        let economiaAnualDepoisDoInvestimento = economiaBruta - custoDasPreventivas;
+
+        if (reducao > 100) {
+            div_resultado.innerHTML = "Informe um percentual de redução entre 0 e 100.";
+        } else {
+            div_resultado.innerHTML = `
+                <h2>Resultado da simulação</h2>
+                <p><b>Custo de uma falha:</b> R$ ${custoPorFalha.toFixed(2)}</p>
+                <p><b>Custo anual sem monitoramento:</b> R$ ${custoAnualSemMonitoramento.toFixed(2)}</p>
+                <p><b>Falhas que podem ser evitadas no ano:</b> ${falhasEvitadas.toFixed(1)}</p>
+                <p><b>Investimento inicial no monitoramento:</b> R$ ${investimentoInicial.toFixed(2)}</p>
+                <p><b>Custo das manutenções preventivas:</b> R$ ${custoDasPreventivas.toFixed(2)}</p>
+                <p><b>Economia estimada no primeiro ano:</b> R$ ${economiaPrimeiroAno.toFixed(2)}</p>
+                <p><b>Economia anual após o investimento inicial:</b> R$ ${economiaAnualDepoisDoInvestimento.toFixed(2)}</p>
+            `;
+        }
+    }
+</script>
