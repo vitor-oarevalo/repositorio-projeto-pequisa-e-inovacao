@@ -7,6 +7,7 @@ idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 email VARCHAR(100),
 CONSTRAINT chkEmail CHECK (email LIKE '%@%'),
+senha VARCHAR(255),
 statuss VARCHAR(20),
 CONSTRAINT chkStatus CHECK(statuss IN('Ativo', 'Inativo')),
 tipoUsuario VARCHAR(30),
@@ -14,10 +15,10 @@ CONSTRAINT chkTipo CHECK (tipoUsuario IN ('Operador', 'Admin'))
 );
 
 INSERT INTO cadastro VALUES
-	(default,'Felipe Santos Silva', 'felipe.santos@outlook.com', 'Ativo', 'Admin'),
-    (default,'Cecilia Fernandes Mendonça', 'cecilia.mendonca@outlook.com', 'Ativo', 'Operador'),
-    (default, 'Evangeline Souza Barbosa', 'evangeline.barbosa@outlook.com', 'Inativo', 'Operador'),
-    (default, 'Marcos Anderson Santiago', 'marcos.santiago@outlook.com', 'Ativo', 'Admin');
+	(default,'Felipe Santos Silva', 'felipe.santos@outlook.com','123456', 'Ativo', 'Admin'),
+    (default,'Cecilia Fernandes Mendonça', 'cecilia.mendonca@outlook.com','123457', 'Ativo', 'Operador'),
+    (default, 'Evangeline Souza Barbosa', 'evangeline.barbosa@outlook.com','123458', 'Inativo', 'Operador'),
+    (default, 'Marcos Anderson Santiago', 'marcos.santiago@outlook.com','123459', 'Ativo', 'Admin');
     
 SELECT * FROM cadastro;
 DESCRIBE cadastro;
@@ -40,7 +41,7 @@ INSERT INTO motores VALUES
 SELECT * FROM motores;
 DESCRIBE motores;
 
--- TABELA PARA ARMAZENAR A TEMPERATURA RECEBIDA
+-- TABELA PARA ARMAZENAR A TEMPERATURA RECEBIDA
 CREATE TABLE leituraTemperatura(
 idLeitura INT PRIMARY KEY AUTO_INCREMENT,
 modeloMotor VARCHAR(100), -- AQUI O CERTO SERIA SER OS MESMOS MODELO DA TABELA ANTERIOR
