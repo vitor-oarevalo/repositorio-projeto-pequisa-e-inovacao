@@ -52,15 +52,28 @@
         // cálculos para a implementação do projeto:
         let custoSensor = qtdMaquinas * 250;
         let custoInstalacao = qtdMaquinas * 400;
-        let investimentoTotal = custoSensor + custoInstalacao + 350;
+        let custoEquipamentos = qtdMaquinas * 350;
+        let investimentoTotal = custoSensor + custoInstalacao + custoEquipamentos;
 
         // Cálculo de quanto nosso cliente deixar de perder:
         let potencialPrejuizoEvitado = prejuizoTotal - investimentoTotal;
 
-        div_exibir.innerHTML =
+        //payback, em período de 30 dias:
+        let payback = 'Não é possível calcular (prejuízo total é zero)';
+        if (prejuizoTotal > 0){
+            payback = (investimentoTotal/ prejuizoTotal).toFixed(1) + 'período(s) de 30 dias.';
+        }
+
+        let resultado =
             `🟧Prejuízo por ocorrência: R$${prejuizo} <br> 
             🟥Prejuízo total estimado: R$${prejuizoTotal} <br>
             🟨Seu investimento inicial será: R$${investimentoTotal} <br> 
             🟩O potencial de prejuízo evitado será: R$${potencialPrejuizoEvitado}.`
+
+        if(potencialPrejuizoEvitado < 0){
+            resultado += '<br><br>⚠ Atenção: com esses números, o investimento inicial é maior que o prejuízo evitado. Talvez o monitoramento não compense nesse cenário.';
+        }
+
+        div_exibir.innerHTML =  resultado;
     }
 </script>
