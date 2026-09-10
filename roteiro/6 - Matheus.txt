@@ -1,0 +1,25 @@
+Para os senhores, o mais importante é a sua linha de produção rodando e sem interrupções.
+
+Para evitar isso, nós instalamos um 'vigia eletrônico' na carcaça do motor da bomba centrífuga. Onde a nossa parte no projeto é garantir que ele consiga monitorar o calor do motor e enviar essa informação para a tela do seu computador.
+
+Explicação do hardware
+
+Para isso, nós usamos uma pequena placa de controle chamada Arduino e um sensor de temperatura, o LM35.
+
+Pense nesse sensor como um termômetro eletrônico. A física dele funciona assim: para cada grau que o seu motor esquenta, o sensor gera um sinal elétrico muito sutil de 10 milivolts. É como se ele estivesse conversando com a nossa placa através de pequenos 'pulsos' de eletricidade proporcionais ao calor.
+
+COMO A LEITURA ACONTECE Como o computador não entende 'calor' e nem 'eletricidade pura', a nossa placa Arduino funciona como um tradutor.
+
+Ela pega esses milivolts do sensor e os transforma em um número que o sistema entende. Ela divide a energia em uma escala muito precisa de 0 a 1023. É como se dividíssemos uma régua em 1024
+
+pedacinhos para não perder nenhuma variação de temperatura
+
+EXEMPLO
+
+Vamos para a prática do seu dia a dia: se o seu motor começar a trabalhar forçado e esquentar, o sensor vai enviar um sinal. A nossa placa vai ler o número 164.
+
+O nosso sistema faz a conta automaticamente e sabe que 164 significa que o seu motor atingiu 80 graus Celsius. Pro senhor, isso significa um Alerta de Atenção na tela: o motor está perigosamente quente e precisa ser verificado antes que queime e pare a fábrica.
+
+"Esse monitoramento acontece sem parar, a cada dois segundos, 24 horas por dia.
+
+Essa é a base de hardware da MaqTemp.

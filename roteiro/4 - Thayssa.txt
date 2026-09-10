@@ -1,0 +1,26 @@
+Simulador Financeiro
+
+"O Simulador Financeiro é uma calculadora que a MaqTemp desenvolveu para traduzir o problema do superaquecimento em números claros de custo e retorno. Em vez de convencer o cliente com argumentos abstratos, deixamos que os próprios dados da empresa dele mostrem se o investimento compensa.
+
+Ele pede o custo do reparo, o custo de um dia parado, quantos dias a máquina fica parada por ocorrência, e quantas ocorrências em 30 dias. Mais um dado do projeto: quantas máquinas vão receber o sensor — usamos custo fixo de mercado de R$1.000 por máquina, entre sensor, instalação e equipamento.
+
+Vou simular com um cenário real de fábrica de médio porte."
+
+(preencher os campos com: custo do reparo R$, custo de um dia parado R$, dias que a máquina ficou parada ______, ocorrências em 30 dias ______, quantidade de máquinas ______ — e clicar em calcular)
+
+"Aqui ele calcula o prejuízo por ocorrência, o prejuízo total do período, o investimento necessário e — o principal — quanto a empresa deixa de perder contratando a gente, e em quanto tempo esse investimento se paga."
+
+(ler o resultado na tela)
+
+"E se o investimento fosse maior que o prejuízo evitado, o próprio simulador avisaria o cliente — a gente não esconde cenário ruim, é uma proposta honesta e baseada em dado real."
+
+
+Próximos passos
+
+"Mas a MaqTemp não para por aqui — temos três próximos passos que vão levar a solução ainda mais longe.
+
+O primeiro é o alerta sonoro. Hoje o aviso é apenas visual, pela luz do sensor, mas numa fábrica barulhenta, com máquina ligada, o operador nem sempre está olhando pro equipamento naquele momento. Por isso, vamos conectar uma sirene diretamente ao Arduino, que dispara assim que a temperatura entra em zona de risco — garantindo reação imediata, mesmo sem ninguém observando o sensor naquele instante.
+
+O segundo é inteligência artificial. Hoje a gente avisa quando a temperatura já está alta. Com um modelo de IA treinado no histórico de leituras, o sistema vai aprender o comportamento normal de cada motor e identificar os sinais que antecedem uma falha — saindo do reativo e indo para o realmente preditivo.
+
+E o terceiro é o dashboard completo: uma tela única onde o gestor acompanha, em tempo real, a temperatura de todos os motores, o histórico de alertas e até a economia gerada pelo sistema — tudo conectado à mesma lógica do simulador financeiro que mostramos aqui.

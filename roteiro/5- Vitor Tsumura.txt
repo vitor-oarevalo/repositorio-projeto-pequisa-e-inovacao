@@ -1,0 +1,9 @@
+Os dados do projeto serão armazenados em um banco de dados, que é responsável por organizar e gerenciar essas informações. Para isso, utilizaremos o MySQL, hospedado dentro de uma máquina virtual, que será explicada mais adiante.
+
+Dentro do banco, teremos dados como os clientes e motores cadastrados, os registros de temperatura coletados pelos sensores e os tipos de alertas gerados pelo sistema.
+
+De forma resumida, o banco de dados é importante porque funciona como a base de armazenamento da MaqTemp, mantendo os dados organizados e disponíveis para que o sistema possa utilizá-los e gerar informações úteis para o correto funcionamento do nosso projeto.
+
+Agora, vou realizar alguns comandos para demonstrar o funcionamento e a estrutura das nossas tabelas.
+
+OBS: vou explicar a estrutura das tabelas e dar INSERT E UPDATE

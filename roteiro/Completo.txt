@@ -1,0 +1,104 @@
+1 - Antes de mostrar a solução, deixa eu situar vocês: onde a MaqTemp vai atuar e por que esse problema importa.
+O mercado de tintas no Brasil fatura R$40 bilhões por ano. Somos o 4º maior produtor mundial, atrás só da China, EUA e Índia — quase 2 bilhões de litros produzidos anualmente, gerando mais de 600 mil empregos diretos e indiretos.
+Nosso foco são as indústrias desse setor que operam bombas centrífugas em processos de transferência e mistura — onde motores elétricos trabalham sob esforço contínuo e alto risco de superaquecimento. Fábricas que hoje ainda dependem de inspeção manual e manutenção corretiva, e que podem evitar paradas custosas com monitoramento automatizado.
+E por que isso é urgente? O problema é direto: o superaquecimento dos motores elétricos das bombas centrífugas pode causar falhas e paradas inesperadas na produção.
+O impacto disso é real — custos com manutenção corretiva, desperdício de materiais, perda de produção, e um aumento significativo nos riscos operacionais da planta.
+E a necessidade que sobra desse cenário é clara: monitoramento contínuo da temperatura, capaz de identificar anomalias antecipadamente e permitir manutenção preventiva — antes que a falha aconteça, não depois.
+É exatamente esse o espaço que a MaqTemp ocupa.
+
+2 - Depois de entender o problema e o impacto que o Leonardo apresentou, a pergunta natural é: como a MaqTemp resolve isso na prática? É o que mostro agora, através do nosso Diagrama de Visão de Negócio.
+Tudo começa na Captura: o sensor LM35, instalado no motor da bomba centrífuga, mede a temperatura em tempo real. Esse dado segue para a Transmissão, onde o Arduino coleta a leitura e envia ao sistema de monitoramento.
+A partir daí, o sistema faz a Análise, classificando a situação em três faixas — abaixo de 80°C, condição normal; a partir de 80°C, estado de aviso; acima de 90°C, alerta emergencial. Cada faixa dispara uma Ação correspondente, que vai do registro normal da operação até um alerta visual crítico recomendando verificação imediata.
+Vale destacar: o sistema informa e alerta, mas a decisão continua sempre com o operador — nosso objetivo é dar visibilidade da condição térmica do motor, não substituir os sistemas de proteção industrial já existentes.
+O Resultado é direto: motor operando com segurança, falha evitada. Esses alertas chegam por Notificação visual, e tudo fica registrado em Relatórios e Histórico, alimentando decisões futuras.
+E essa solução não nasceu de forma improvisada. Organizamos o projeto em um board Kanban no Trello, com Excel de apoio, em quatro colunas — Backlog, Em Andamento, Em Revisão e Concluído — com reuniões semanais e cada cartão com responsável, prazo e status definidos.          
+Ou seja: uma solução tecnicamente sólida, com gestão real por trás, pronta pra gerar retorno desde o primeiro mês."
+
+3 - O protótipo do nosso site institucional, foi pensado tanto para o visual comunicar o propósito do projeto quanto para falar diretamente com o público certo.
+Nosso público-alvo não é o consumidor comum, é o gestor de manutenção, o engenheiro de produção e o diretor de operações de indústrias que dependem de bombas centrífugas — com foco especial na indústria de tintas, que é onde identificamos o problema. Por isso, a tela de cadastro pede 'e-mail corporativo' em vez de e-mail pessoal, e a linguagem do site fala em 'proteger seus ativos industriais', não em benefícios pessoais.
+Na paleta de cores, usamos azul-marinho escuro como base — passa tecnologia e confiabilidade, o ambiente do chão de fábrica. Já o laranja, nos botões e destaques, representa o próprio calor e o alerta, dialogando direto com o problema que resolvemos: o superaquecimento.
+Na página inicial, o topo já mira esse público técnico: números como '24/7' e '2 segundos de latência' são indicadores que fazem sentido pra quem entende de operação industrial, não pro público geral.
+Os blocos seguintes reforçam isso: mostramos a solução com sensores LM35 e Arduino, o diagrama de como os dados viajam até o banco de dados, e um simulador financeiro — esse é o elemento mais estratégico do site, porque fala a língua de quem decide investimento: custo de parada, prejuízo por ocorrência, economia potencial. É pensado pra convencer um gestor, não um usuário casual.
+Por fim, o bloco 'quem sente o impacto' segmenta exatamente esse público — indústrias de tintas, profissionais de manutenção e operadores de linha — mostrando que sabemos exatamente pra quem estamos vendendo a solução.
+
+4 - O Simulador Financeiro é uma calculadora que a MaqTemp desenvolveu para traduzir o problema do superaquecimento em números claros de custo e retorno. Em vez de convencer o cliente com argumentos abstratos, deixamos que os próprios dados da empresa dele mostrem se o investimento compensa.
+
+Ele pede o custo do reparo, o custo de um dia parado, quantos dias a máquina fica parada por ocorrência, e quantas ocorrências em 30 dias. Mais um dado do projeto: quantas máquinas vão receber o sensor — usamos custo fixo de mercado de R$1.000 por máquina, entre sensor, instalação e equipamento.
+
+Vou simular com um cenário real de fábrica de médio porte."
+
+(preencher os campos com: custo do reparo R$, custo de um dia parado R$, dias que a máquina ficou parada ______, ocorrências em 30 dias ______, quantidade de máquinas ______ — e clicar em calcular)
+
+"Aqui ele calcula o prejuízo por ocorrência, o prejuízo total do período, o investimento necessário e — o principal — quanto a empresa deixa de perder contratando a gente, e em quanto tempo esse investimento se paga."
+
+(ler o resultado na tela)
+
+"E se o investimento fosse maior que o prejuízo evitado, o próprio simulador avisaria o cliente — a gente não esconde cenário ruim, é uma proposta honesta e baseada em dado real.
+
+5 - Os dados do projeto serão armazenados em um banco de dados, que é responsável por organizar e gerenciar essas informações. Para isso, utilizaremos o MySQL, hospedado dentro de uma máquina virtual, que será explicada mais adiante.
+
+Dentro do banco, teremos dados como os clientes e motores cadastrados, os registros de temperatura coletados pelos sensores e os tipos de alertas gerados pelo sistema.
+
+De forma resumida, o banco de dados é importante porque funciona como a base de armazenamento da MaqTemp, mantendo os dados organizados e disponíveis para que o sistema possa utilizá-los e gerar informações úteis para o correto funcionamento do nosso projeto.
+
+Agora, vou realizar alguns comandos para demonstrar o funcionamento e a estrutura das nossas tabelas.
+
+OBS: vou explicar a estrutura das tabelas e dar INSERT E UPDATE
+
+6 - Para os senhores, o mais importante é a sua linha de produção rodando e sem interrupções.
+
+Para evitar isso, nós instalamos um 'vigia eletrônico' na carcaça do motor da bomba centrífuga. Onde a nossa parte no projeto é garantir que ele consiga monitorar o calor do motor e enviar essa informação para a tela do seu computador.
+
+Explicação do hardware
+
+Para isso, nós usamos uma pequena placa de controle chamada Arduino e um sensor de temperatura, o LM35.
+
+Pense nesse sensor como um termômetro eletrônico. A física dele funciona assim: para cada grau que o seu motor esquenta, o sensor gera um sinal elétrico muito sutil de 10 milivolts. É como se ele estivesse conversando com a nossa placa através de pequenos 'pulsos' de eletricidade proporcionais ao calor.
+
+COMO A LEITURA ACONTECE Como o computador não entende 'calor' e nem 'eletricidade pura', a nossa placa Arduino funciona como um tradutor.
+
+Ela pega esses milivolts do sensor e os transforma em um número que o sistema entende. Ela divide a energia em uma escala muito precisa de 0 a 1023. É como se dividíssemos uma régua em 1024
+
+pedacinhos para não perder nenhuma variação de temperatura
+
+EXEMPLO
+
+Vamos para a prática do seu dia a dia: se o seu motor começar a trabalhar forçado e esquentar, o sensor vai enviar um sinal. A nossa placa vai ler o número 164.
+
+O nosso sistema faz a conta automaticamente e sabe que 164 significa que o seu motor atingiu 80 graus Celsius. Pro senhor, isso significa um Alerta de Atenção na tela: o motor está perigosamente quente e precisa ser verificado antes que queime e pare a fábrica.
+
+"Esse monitoramento acontece sem parar, a cada dois segundos, 24 horas por dia.
+
+Essa é a base de hardware da MaqTemp.
+
+7 - Nosso produto foi estruturado utilizando o conceito de virtualização, garantindo segurança, viabilidade e economia.
+
+A virtualização é o processo de criar um ambiente virtual simulando um ambiente físico, no caso, um computador. Nossa base de dados será hospedada em um servidor virtual, isolado e seguro dentro de um computador. Para isso, foi utilizado o VirtualBox, uma tecnologia responsável por gerenciar ambientes virtuais.
+
+Por que isso é relevante para o projeto?
+
+Temos uma economia imediata por não precisarmos investir em equipamentos físicos apenas para testes e demonstrações. Além disso, temos também a segurança, já que é um ambiente isolado e qualquer simulação não afeta nenhuma máquina da empresa.
+
+Agora, para demonstrar o quão ágil essa prática é, iremos mostrar por meio de comandos simples do sistema operacional Lubunto, como podemos simular a gestão do projeto.
+
+[mkdir pastaProjeto]
+
+Que serve para criar diretórios. Nesse caso, a pasta do projeto.
+
+[cd pastaProjeto]
+
+Com o comando cd, conseguimos mudar para o diretório que acabamos de criar.
+
+[touch baseDeDados.txt]
+
+Aqui nós criamos um arquivo simulando a base de dados, utilizando o comando touch.
+
+Dessa forma, entregamos uma simulação robusta, com custo zero de infraestrutura física nesta etapa, garantindo que o produto chegue às industrias testado, seguro e pronto para proteger a sua produção.
+
+8 - Mas a MaqTemp não para por aqui — temos três próximos passos que vão levar a solução ainda mais longe.
+
+O primeiro é o alerta sonoro. Hoje o aviso é apenas visual, pela luz do sensor, mas numa fábrica barulhenta, com máquina ligada, o operador nem sempre está olhando pro equipamento naquele momento. Por isso, vamos conectar uma sirene diretamente ao Arduino, que dispara assim que a temperatura entra em zona de risco — garantindo reação imediata, mesmo sem ninguém observando o sensor naquele instante.
+
+O segundo é inteligência artificial. Hoje a gente avisa quando a temperatura já está alta. Com um modelo de IA treinado no histórico de leituras, o sistema vai aprender o comportamento normal de cada motor e identificar os sinais que antecedem uma falha — saindo do reativo e indo para o realmente preditivo.
+
+E o terceiro é o dashboard completo: uma tela única onde o gestor acompanha, em tempo real, a temperatura de todos os motores, o histórico de alertas e até a economia gerada pelo sistema — tudo conectado à mesma lógica do simulador financeiro que mostramos aqui.

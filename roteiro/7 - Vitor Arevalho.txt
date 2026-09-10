@@ -1,0 +1,23 @@
+Nosso produto foi estruturado utilizando o conceito de virtualização, garantindo segurança, viabilidade e economia.
+
+A virtualização é o processo de criar um ambiente virtual simulando um ambiente físico, no caso, um computador. Nossa base de dados será hospedada em um servidor virtual, isolado e seguro dentro de um computador. Para isso, foi utilizado o VirtualBox, uma tecnologia responsável por gerenciar ambientes virtuais.
+
+Por que isso é relevante para o projeto?
+
+Temos uma economia imediata por não precisarmos investir em equipamentos físicos apenas para testes e demonstrações. Além disso, temos também a segurança, já que é um ambiente isolado e qualquer simulação não afeta nenhuma máquina da empresa.
+
+Agora, para demonstrar o quão ágil essa prática é, iremos mostrar por meio de comandos simples do sistema operacional Lubunto, como podemos simular a gestão do projeto.
+
+[mkdir pastaProjeto]
+
+Que serve para criar diretórios. Nesse caso, a pasta do projeto.
+
+[cd pastaProjeto]
+
+Com o comando cd, conseguimos mudar para o diretório que acabamos de criar.
+
+[touch baseDeDados.txt]
+
+Aqui nós criamos um arquivo simulando a base de dados, utilizando o comando touch.
+
+Dessa forma, entregamos uma simulação robusta, com custo zero de infraestrutura física nesta etapa, garantindo que o produto chegue às industrias testado, seguro e pronto para proteger a sua produção.

@@ -1,0 +1,7 @@
+Depois de entender o problema e o impacto que o Leonardo apresentou, a pergunta natural é: como a MaqTemp resolve isso na prática? É o que mostro agora, através do nosso Diagrama de Visão de Negócio.
+Tudo começa na Captura: o sensor LM35, instalado no motor da bomba centrífuga, mede a temperatura em tempo real. Esse dado segue para a Transmissão, onde o Arduino coleta a leitura e envia ao sistema de monitoramento.
+A partir daí, o sistema faz a Análise, classificando a situação em três faixas — abaixo de 80°C, condição normal; a partir de 80°C, estado de aviso; acima de 90°C, alerta emergencial. Cada faixa dispara uma Ação correspondente, que vai do registro normal da operação até um alerta visual crítico recomendando verificação imediata.
+Vale destacar: o sistema informa e alerta, mas a decisão continua sempre com o operador — nosso objetivo é dar visibilidade da condição térmica do motor, não substituir os sistemas de proteção industrial já existentes.
+O Resultado é direto: motor operando com segurança, falha evitada. Esses alertas chegam por Notificação visual, e tudo fica registrado em Relatórios e Histórico, alimentando decisões futuras.
+E essa solução não nasceu de forma improvisada. Organizamos o projeto em um board Kanban no Trello, com Excel de apoio, em quatro colunas — Backlog, Em Andamento, Em Revisão e Concluído — com reuniões semanais e cada cartão com responsável, prazo e status definidos.          
+Ou seja: uma solução tecnicamente sólida, com gestão real por trás, pronta pra gerar retorno desde o primeiro mês."
