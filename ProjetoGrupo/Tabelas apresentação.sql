@@ -62,6 +62,7 @@ INSERT INTO leituraTemperatura (modeloMotor, temperatura, situacao) VALUES
     
 SELECT CONCAT('Motor: ', modeloMotor, ' | Temperatura: ', temperatura, ' ºC') AS leitura FROM leituraTemperatura;
 
+
 -- 	TABELAS PARA HISTÓRICO DE ALERTAS
 CREATE TABLE alertas(
 idAlerta INT PRIMARY KEY AUTO_INCREMENT,
