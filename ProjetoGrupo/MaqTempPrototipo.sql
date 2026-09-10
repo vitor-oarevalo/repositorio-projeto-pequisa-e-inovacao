@@ -35,8 +35,8 @@ SELECT CONCAT('Cliente: ', nome, ' | Telefone: ', telefone ) AS contato FROM cad
 SELECT CONCAT(nome, ' - ', cidade) AS cliente FROM cadastro;
 SELECT CONCAT('Endereço: ', endereco, ', ', numero, ' - ', cidade) AS 'endereco completo' FROM cadastro;
 SELECT ifnull (nome, 'Sem identificação') as nome FROM cadastro;
-UPDATE cadastro SET telefone = '11999999999' WHERE idCadastro = 1;
-DELETE FROM cadastro WHERE idCadastro = 1;
+UPDATE cadastro SET telefone = '11999999999' WHERE idUsuario = 1;
+DELETE FROM cadastro WHERE idUsuario = 1;
 ALTER TABLE cadastro ADD COLUMN telefone VARCHAR(20);
 ALTER TABLE cadastro MODIFY COLUMN nome VARCHAR(150);
 ALTER TABLE cadastro RENAME COLUMN telefone TO telefoneContato;
