@@ -1,6 +1,6 @@
 1 - Antes de mostrar a solução, deixa eu situar vocês: onde a MaqTemp vai atuar e por que esse problema importa.
 O mercado de tintas no Brasil fatura R$40 bilhões por ano. Somos o 4º maior produtor mundial, atrás só da China, EUA e Índia — quase 2 bilhões de litros produzidos anualmente, gerando mais de 600 mil empregos diretos e indiretos.
-Nosso foco são as indústrias desse setor que operam bombas centrífugas em processos de transferência e mistura — onde motores elétricos trabalham sob esforço contínuo e alto risco de superaquecimento. Fábricas que hoje ainda dependem de inspeção manual e manutenção corretiva, e que podem evitar paradas custosas com monitoramento automatizado.
+Nosso foco são as indústrias desse setor que operam bombas centrífugas em processos de transferência e mistura — onde motores elétricos trabalham sob esforço contínuo e alto risco de superaquecimento. Fábricas que hoje ainda dependem de inspeção manual e manutenção corretiva, e que podem evitar paradas custosas com monitoramento.
 E por que isso é urgente? O problema é direto: o superaquecimento dos motores elétricos das bombas centrífugas pode causar falhas e paradas inesperadas na produção.
 O impacto disso é real — custos com manutenção corretiva, desperdício de materiais, perda de produção, e um aumento significativo nos riscos operacionais da planta.
 E a necessidade que sobra desse cenário é clara: monitoramento contínuo da temperatura, capaz de identificar anomalias antecipadamente e permitir manutenção preventiva — antes que a falha aconteça, não depois.
