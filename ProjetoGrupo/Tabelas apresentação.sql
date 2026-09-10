@@ -18,9 +18,8 @@ INSERT INTO cadastro VALUES
     (default, 'Michele Souza Barbosa', 'evangeline.barbosa@outlook.com','123458', 'Inativo'),
     (default, 'Marcos Anderson Santiago', 'marcos.santiago@outlook.com','123459', 'Ativo');
     
-SELECT CONCAT('Cliente: ', nome, ' | Telefone: ', telefone ) AS Contato FROM cadastro;
-SELECT CONCAT('Endereço: ', endereco, ', ', numero, ' - ', cidade) AS 'Endereco completo' FROM cadastro;
-UPDATE cadastro SET telefone = '11999999999' WHERE idCadastro = 1;
+SELECT CONCAT('Cliente: ', nome, ' | E-mail: ', email ) AS Contato FROM cadastro;
+UPDATE cadastro SET email = 'felipe.silva@outlook.com' WHERE idUsuario = 1;
 DESCRIBE cadastro;
     
 -- TABELA DE CADASTRO DOS MOTORES QUE SERÃO MONITORADOS
@@ -51,10 +50,9 @@ idLeitura INT PRIMARY KEY AUTO_INCREMENT,
 modeloMotor VARCHAR(100), -- AQUI O CERTO SERIA SER OS MESMOS MODELO DA TABELA ANTERIOR
 temperatura DECIMAL (5,2),
 dtLeitura DATETIME DEFAULT CURRENT_TIMESTAMP,
-situacao VARCHAR(20),
+situacao VARCHAR(10),
 CONSTRAINT chkSituacao CHECK (situacao IN('Normal', 'Atenção', 'Alerta'))
 );
-
 
 INSERT INTO leituraTemperatura (modeloMotor, temperatura, situacao) VALUES
 	('WEG W22', 62.50, 'Normal'),
@@ -67,16 +65,15 @@ SELECT CONCAT('O motor ', modeloMotor, ' está com a ', CASE WHEN temperatura > 
 DELETE FROM leituraTemperatura WHERE idLeitura = 1;
 DESCRIBE leituraTemperatura;
 
-
 -- 	TABELAS PARA HISTÓRICO DE ALERTAS
 CREATE TABLE alertas(
 idAlerta INT PRIMARY KEY AUTO_INCREMENT,
 modeloMotor VARCHAR(100),
 temperatura DECIMAL(5,2),
 dtAlerta DATETIME DEFAULT CURRENT_TIMESTAMP,
-nivel VARCHAR(20),
+nivel VARCHAR(10),
 CONSTRAINT chkNivel CHECK (nivel IN('Atenção','Alerta')),
-statuss VARCHAR(20),
+statuss VARCHAR(10),
 CONSTRAINT chkStatusAlerta CHECK (statuss IN ('Pendente', 'Resolvido')) 
 );
 
