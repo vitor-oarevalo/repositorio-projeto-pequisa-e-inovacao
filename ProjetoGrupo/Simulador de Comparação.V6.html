@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro - Monitoramento de Temperatura</title>
+</head>
+<body style="background-color: #dedede;">
+    <h1 style="color:#11255f;">Simulador Financeiro -<span style="color: #E87722;"> Maq</span><span style="color: #11255f;">Temp</span></h1>
+    <p>Esse simulador, tem como objetivo ajudar você e sua empresa <br> 
+    a tomar a decisão correta para o sucesso! <br></p>
+    
+    <span>Informe o custo de um reparo (R$): </span>
+    <input type="text" id="ipt_custoReparo" style="background-color: #dededea8;"> <br>
+    
+    <span>Quanto custa um dia de máquina parada (R$)? </span>
+    <input type="text" id="ipt_diaCusto" style="background-color: #dededea8;"> <br>
+
+    <span>Quantos dias a máquina ficou parada: </span>
+    <input type="text" id="ipt_maquinaParada" style="background-color:#dededea8;"> <br>
+
+    <span>Qual a quantidade de ocorrências, por superaquecimento, em um período de 30 dias? </span>
+    <input type="text" id="ipt_qtdOcorrencia" style="background-color: #dededea8;"> <br>
+
+    <h2 style="color: #E87722;">Dados do <span style="color: #11255f;">Monitoramento</span></h2>
+    <span>Informe quantas máquinas irão receber o sensor: </span>
+    <input type="text" id="ipt_qtdMaquinas" style="background-color: #dededea8;"> <br>
+
+    <p>Para fins de simulação iremos usar números fixos para os seguintes campos: <br>
+        Custo do sensor: R$250,00 <br> 
+        Custo da Instalação: R$400,00 <br> 
+        Custo dos equipamentos: R$350,00 <br> 
+    <b>Todos os valores citados acima, são uma média dos valores destes no mercado.</b></p>
+
+    <button onclick="calcular()">💸Calcular impacto financeiro💸</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        let custoReparo = Number(ipt_custoReparo.value);
+        let diaCusto = Number(ipt_diaCusto.value);
+        let maquinaParada = Number(ipt_maquinaParada.value);
+        let qtdOcorrencia = Number(ipt_qtdOcorrencia.value);
+        let qtdMaquinas = Number(ipt_qtdMaquinas.value);
+        
+        // calculo do prejuizo de UMA ocorrencia:
+        let prejuizo = custoReparo + (diaCusto * maquinaParada)
+
+        // prejuízo total:
+        let prejuizoTotal = prejuizo * qtdOcorrencia;
+        
+        // cálculos para a implementação do projeto:
+        let custoSensor = qtdMaquinas * 250;
+        let custoInstalacao = qtdMaquinas * 400;
+        let custoEquipamentos = qtdMaquinas * 350;
+        let investimentoTotal = custoSensor + custoInstalacao + custoEquipamentos;
+
+        // Cálculo de quanto nosso cliente 'deixa' de perder:
+        let potencialPrejuizoEvitado = prejuizoTotal - investimentoTotal;
+
+        //payback, em período de 30 dias:
+        let payback = 'Não é possível calcular (prejuízo total é zero)';
+        if (prejuizoTotal > 0){
+           let prejuizoPorDia = prejuizoTotal / 30;
+           let diasParaRetorno = investimentoTotal / prejuizoPorDia;
+            payback =  `${diasParaRetorno.toFixed(0)} dia(s)`;
+        }
+
+        let resultado =
+            `<br>
+            🟧Prejuízo por ocorrência: R$${prejuizo} <br> 
+            🟥Prejuízo total estimado: R$${prejuizoTotal} <br>
+            🟨Seu investimento inicial será: R$${investimentoTotal} <br> 
+            🟩O potencial de prejuízo evitado será: R$${potencialPrejuizoEvitado}. <br>
+            🕒Tempo estimado de retorno do investimneto (payback): ${payback}.`;
+
+        if(potencialPrejuizoEvitado < 0){
+            resultado += '<br><br>⚠ Atenção: com esses números, o investimento inicial é maior que o prejuízo evitado. Talvez o monitoramento não compense nesse cenário.';
+        }
+
+        div_exibir.innerHTML =  resultado;
+    }
+</script>
