@@ -2,6 +2,8 @@
 Projeto de criação de um sistema utilizando um sensor de temperatura.
 
 ## Navegação Rápida
+Link da Calculadora Financeira do Grupo <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/ProjetoGrupo/Simulador%20de%20Comparação.V6.html">Calculadora Grupo</a>
+<br> <br>
 Link da Calculadora Vitor Arevalo: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosVitorArevalo/calculadora/calculadoraVitorA.html">Calculadora Vitor Arevalo</a> <br>
 Link da Calculadora Vitor Hiroyuky: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosVitorHiroyuky/simulador_financeiro/simulador_financeiro.html">Calculadora Vitor Hiroyuky</a> <br>
 Link da Calculadora Manoel Alves: <a href="https://vitor-oarevalo.github.io/repositorio-projeto-pequisa-e-inovacao/projetosManoel/Simulador%20de%20Comparação.html">Calculadora Manoel Alves</a> <br>
